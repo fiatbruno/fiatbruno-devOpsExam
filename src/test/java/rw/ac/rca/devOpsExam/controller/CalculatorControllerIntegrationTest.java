@@ -1,4 +1,4 @@
-package rw.ac.rca.termOneExam.controller;
+package rw.ac.rca.devOpsExam.controller;
 
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
@@ -9,8 +9,8 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.junit.runner.RunWith;
-import rw.ac.rca.termOneExam.domain.City;
-import rw.ac.rca.termOneExam.utils.APIResponse;
+import rw.ac.rca.devOpsExam.domain.Calculator;
+import rw.ac.rca.devOpsExam.utils.APIResponse;
 
 import static org.junit.jupiter.api.Assertions.*;
 
