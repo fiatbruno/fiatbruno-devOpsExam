@@ -25,7 +25,7 @@ public class CalculatorControllerIntegrationTest {
 
     @Test
     public void getById_success() throws JSONException {
-        ResponseEntity<City> city = this.restTemplate.getForEntity(apiPath+"/id/101",Calculator.class);
+        ResponseEntity<Calculator> Calculator = this.restTemplate.getForEntity(apiPath+"/id/101",Calculator.class);
 
         assertTrue(calculator.getStatusCode().is2xxSuccessful());
 
@@ -37,28 +37,28 @@ public class CalculatorControllerIntegrationTest {
 
         assertTrue(response.getStatusCodeValue()==404);
         assertFalse(response.getBody().isStatus());
-        assertEquals("City not found with id 600",response.getBody().getMessage());
+        assertEquals("Calculator not found",response.getBody().getMessage());
 
     }
 
     @Test
-    public void postCity_success() throws JSONException {
-        City body = new City(105,"Cairo",70,12);
-        ResponseEntity<City> item = this.restTemplate.postForEntity(apiPath+"/add",body, City.class);
+    public void postCalculator_success() throws JSONException {
+        Calculator body = new Calculator(100L);
+        ResponseEntity<Calculator> item = this.restTemplate.postForEntity(apiPath+"/add",body, Calculator.class);
 
         assertTrue(item.getStatusCode().is2xxSuccessful());
-        assertEquals("Cairo",item.getBody().getName());
+        assertEquals(100,item.getBody().getId());
 
     }
 
     @Test
-    public void postCity_404() throws JSONException {
-        City body = new City(101,"Kigali",70,12);
+    public void postCalculator_404() throws JSONException {
+        Calculator body = new Calculator(101L);
         ResponseEntity<APIResponse> response = this.restTemplate.postForEntity(apiPath+"/add",body,APIResponse.class);
 
         assertTrue(response.getStatusCodeValue()==400);
         assertFalse(response.getBody().isStatus());
-        assertEquals("City name Kigali is registered already",response.getBody().getMessage());
+        assertEquals("Calculator with id ... is registered already",response.getBody().getMessage());
 
     }
 
